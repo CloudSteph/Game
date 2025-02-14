@@ -1,0 +1,13 @@
+# Ignore the virtual environment folder
+venv/
+
+# Ignore complied python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore system files (macOS)
+.DS_Store
+
+# Ignore Pygame cache (if any)
+*.log
