@@ -30,15 +30,15 @@ class Cone:
         self.caught_scoops.append(scoop)
 
     def draw(self, screen):
-        """Draws the cone on the screen."""
+        """Draws the cone as a downward-facing triangle to hold scoops."""
         pygame.draw.polygon(screen, self.color, [
-            (self.x, self.y),
-            (self.x - self.width // 2, self.y + self.height),
-            (self.x + self.width // 2, self.y + self.height)
+            (self.x, self.y + self.height), # 🔽Bottom point (facing downward)
+            (self.x - self.width // 2, self.y), # ⏴ Left point (base)
+            (self.x + self.width // 2, self.y) # ⏵ Right point (base)
         ])
 
         # Draw stacked scoops
         for i, scoop in enumerate(self.caught_scoops):
             scoop_x = self.x
-            scoop_y = self.y - (i + 1) * 35  # Stack scoops on top
+            scoop_y = self.y - self.height - (i + 1) * 35  # Stack scoops *above* the cone
             pygame.draw.circle(screen, scoop.color, (scoop_x, scoop_y), scoop.radius)
